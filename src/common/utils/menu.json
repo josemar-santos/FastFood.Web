@@ -1,0 +1,38 @@
+[
+    {
+        "text": "DashBoard",
+        "icon": "dashboard",
+        "href": "/dashboard"
+    },
+    {
+        "text": "Comidas",
+        "icon": "food",
+        "href": "/food"
+    },
+    {
+        "text": "Pedidos",
+        "icon": "order",
+        "href": "/promotions"
+    },
+    {
+        "text": "Promoções",
+        "icon": "promotion",
+        "href": "/promotions"
+    },
+    {
+        "text": "Usuários",
+        "icon": "user",
+        "href": "/user"
+    },
+    {
+        "text": "Pessoas das Entregas",
+        "icon": "deliveryPerson",
+        "href": "/delivery-person"
+    },
+    {
+        "text": "Categorias",
+        "href": "/category",
+        "icon": "category"
+        
+    }
+]
