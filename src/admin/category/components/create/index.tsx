@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schema, SchemaType } from "../../schema/create";
-import axios from "axios";
-import { toast } from "sonner";
+import {
+  CreateCategoryschema,
+  CreateCategorySchemaType,
+} from "../../schema/create";
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { useCategory } from "../../../../common/stores";
-import { baseUrl, HttpStatus } from "../../../../common/utils";
 import {
   Dialog,
   DialogClose,
@@ -20,6 +20,8 @@ import { Button } from "../../../../common/libs/shadcn/components/ui/button";
 import { Input } from "../../../../common/libs/shadcn/components/ui/input";
 import { Label } from "../../../../common/libs/shadcn/components/ui/label";
 import { Textarea } from "../../../../common/libs/shadcn/components/ui/textarea";
+import { createCategoryService } from "../../services";
+import { Separator } from "../../../../common/libs/shadcn/components/ui/separator";
 
 export const Create = () => {
   const [open, setOpen] = useState(false);
@@ -28,53 +30,19 @@ export const Create = () => {
     handleSubmit,
     formState: { isValid, errors },
     reset,
-  } = useForm<SchemaType>({
-    resolver: zodResolver(schema),
+  } = useForm<CreateCategorySchemaType>({
+    resolver: zodResolver(CreateCategoryschema),
   });
   const retriveCategories = useCategory((state) => state.fetch);
-  const onSubmit = async (values: SchemaType) => {
-    try {
-      if (isValid) {
-        const formRequest = new FormData();
 
-        formRequest.append("name", values.name);
-        formRequest.append("image", values.icon[0]);
-        formRequest.append("description", values.description || "");
+  const onSubmit = async (value: CreateCategorySchemaType) => {
+    if (isValid) {
+      const response = await createCategoryService(value);
 
-        const response = await axios.post(`${baseUrl}/category`, formRequest);
-
-        if (response.status === HttpStatus.CREATED) {
-          reset();
-          setOpen(false);
-          toast.success("Criado com sucesso", {
-            description: response.data.message,
-            closeButton: true,
-          });
-          retriveCategories();
-        }
-      }
-    } catch (error: any) {
-      if (error.response?.data?.message) {
-        const messages = error.response.data.message;
-
-        if (typeof messages === "string") {
-          toast.error("Ocorreu um erro", {
-            description: messages,
-            closeButton: true,
-          });
-        } else if (Array.isArray(messages)) {
-          messages.forEach((msg) =>
-            toast.error("Ocorreu um erro", {
-              description: msg,
-              closeButton: true,
-            })
-          );
-        }
-      } else {
-        toast.error("Ocorreu um erro", {
-          description: "Tente novamente mais tarde.",
-          closeButton: true,
-        });
+      if (response) {
+        reset();
+        retriveCategories();
+        setOpen(false);
       }
     }
   };
@@ -88,11 +56,11 @@ export const Create = () => {
             Novo
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="top-[30%]">
           <DialogHeader>
             <DialogTitle>Criar Categoria</DialogTitle>
           </DialogHeader>
-
+          <Separator />
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <Label htmlFor="name">

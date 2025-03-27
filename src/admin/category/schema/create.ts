@@ -1,5 +1,5 @@
 import { z } from 'zod'
-export const schema = z.object({
+export const CreateCategoryschema = z.object({
     name: z.string().min(1, "O nome é obrigatório"),
     description: z.string().optional(),
     icon: z
@@ -16,4 +16,4 @@ export const schema = z.object({
         }, { message: "O arquivo deve ter no máximo 2MB" }),
 });
 
-export type SchemaType = z.infer<typeof schema>;
+export type CreateCategorySchemaType = z.infer<typeof CreateCategoryschema>;

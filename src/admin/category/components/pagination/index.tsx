@@ -1,5 +1,3 @@
-"use client";
-
 import { Pagination } from "../../../../common/components/pagination";
 import { useCategory } from "../../../../common/stores";
 

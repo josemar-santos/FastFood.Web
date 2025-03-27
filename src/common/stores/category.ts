@@ -10,15 +10,18 @@ type State = {
   selected: string[];
   meta: Meta;
   params: CategoryMeta;
+  loading: boolean;
 };
 
 type Action = {
   fetch: () => void;
   resize: (size: string) => void;
   nextPage: (page: number) => void;
+  search: (name: string) => void;
 };
 
 export const useCategory = create<State & Action>((set, get) => ({
+  loading: false,
   categories: [],
   selected: [],
   params: {
@@ -33,15 +36,22 @@ export const useCategory = create<State & Action>((set, get) => ({
   },
   fetch: async () => {
     try {
+      set((state) => ({
+        ...state,
+        loading: true,
+      }));
+
       const { params } = get();
 
-      const Pathparams = new URLSearchParams({
+      const pathparams = new URLSearchParams({
         page: params.page.toString(),
         perPage: params.perPage.toString(),
       });
 
+      if(params.name) pathparams.append("name", params.name);
+      
       const response = await axios.get<Page<Category>>(
-        `${baseUrl}/category?${Pathparams.toString()}`
+        `${baseUrl}/category?${pathparams.toString()}`
       );
 
       if (response.status === HttpStatus.OK) {
@@ -49,6 +59,7 @@ export const useCategory = create<State & Action>((set, get) => ({
           ...state,
           categories: response.data.content,
           meta: response.data.meta,
+          loading: false,
         }));
       }
     } catch (error) {}
@@ -68,6 +79,16 @@ export const useCategory = create<State & Action>((set, get) => ({
       params: {
         ...state.params,
         page: page,
+      },
+    }));
+  },
+
+  search: (name: string) => {
+    set((state) => ({
+      ...state,
+      params: {
+        ...state.params,
+        name: name,
       },
     }));
   },

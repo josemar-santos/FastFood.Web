@@ -1,15 +1,28 @@
-import { LayoutGrid, Search, Tag } from "lucide-react";
+import { LayoutGrid, Tag } from "lucide-react";
 import { Create } from "../components/create";
 import { CategoryPagination } from "../components/pagination";
 import { CategoryTable } from "../components/table";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "../../../common/libs/shadcn/components/ui/breadcrumb";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../../common/libs/shadcn/components/ui/select";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "../../../common/libs/shadcn/components/ui/breadcrumb";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../../common/libs/shadcn/components/ui/select";
 import { Separator } from "../../../common/libs/shadcn/components/ui/separator";
 import { useCategory } from "../../../common/stores";
 import { pagination } from "../../../common/utils";
+import { Search } from "../components/search";
 
-
-export  const CategoryView = ()=> {
+export const CategoryView = () => {
   const resize = useCategory((state) => state.resize);
   const params = useCategory((state) => state.params);
   const retriveCategories = useCategory((state) => state.fetch);
@@ -64,15 +77,7 @@ export  const CategoryView = ()=> {
               </SelectContent>
             </Select>
             <div className="flex gap-2">
-              <div className="w-80 h-9 border rounded-md flex items-center gap-1 px-3 text-slate-700">
-                <Search />
-                <input
-                  type="text"
-                  placeholder="Buscar Categoria"
-                  className="size-full focus:outline-none text-sm"
-                />
-              </div>
-
+              <Search />
               <Create />
             </div>
           </div>
@@ -84,4 +89,4 @@ export  const CategoryView = ()=> {
       </section>
     </>
   );
-}
+};

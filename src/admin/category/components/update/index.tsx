@@ -21,6 +21,7 @@ import { useCategory } from "../../../../common/stores";
 import { baseUrl, HttpStatus } from "../../../../common/utils";
 import { Category } from "../../interface/category";
 import { updateSchema, UpdateschemaType } from "../../schema/update";
+import { Separator } from "../../../../common/libs/shadcn/components/ui/separator";
 
 type UpdateProps = {
   category: Category;
@@ -105,11 +106,12 @@ export const Update = ({ category }: UpdateProps) => {
             <SquarePen />
           </Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="top-[30%]">
           <DialogHeader>
             <DialogTitle>Criar Categoria</DialogTitle>
           </DialogHeader>
 
+          <Separator />
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <Label htmlFor="name">
