@@ -1,7 +1,4 @@
-import { LayoutGrid, Tag } from "lucide-react";
-import { Create } from "../components/create";
-import { CategoryPagination } from "../components/pagination";
-import { CategoryTable } from "../components/table";
+import { ChefHat, LayoutGrid } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -17,26 +14,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../common/libs/shadcn/components/ui/select";
-import { Separator } from "../../../common/libs/shadcn/components/ui/separator";
-import { useCategory } from "../../../common/stores";
 import { pagination } from "../../../common/utils";
-import { Search } from "../components/search";
+import { Separator } from "../../../common/libs/shadcn/components/ui/separator";
+import { Food_Table } from "../components/table";
+import { Food_Pagination } from "../components/pagination";
 
-export const CategoryView = () => {
-  const resize = useCategory((state) => state.resize);
-  const params = useCategory((state) => state.params);
-  const retriveCategories = useCategory((state) => state.fetch);
-
-  const resizing = (size: string) => {
-    resize(size);
-    retriveCategories();
-  };
-
+export const FoodView = () => {
   return (
     <>
       <section className="space-y-4">
-        <div className="flex justify-between items-center bg-white py-3 px-6 shadow-md">
-          <h1 className="font-semibold text-xl">Categorias</h1>
+        <div className="py-3 px-6 rounded bg-white shadow-md flex justify-between">
+          <h1 className="font-semibold text-xl">Comidas</h1>
 
           <Breadcrumb>
             <BreadcrumbList>
@@ -51,20 +39,18 @@ export const CategoryView = () => {
               <BreadcrumbItem>
                 <BreadcrumbPage>
                   <span className="flex gap-2 items-center">
-                    <Tag size={16} />
-                    Categorias
+                    <ChefHat size={16} />
+                    Comidas
                   </span>
                 </BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </div>
+
         <div className="bg-white shadow-md py-2">
           <div className="px-6 py-2 flex justify-between items-center">
-            <Select
-              value={params.perPage.toString()}
-              onValueChange={(e) => resizing(e)}
-            >
+            <Select>
               <SelectTrigger className="w-[100px]">
                 <SelectValue placeholder="Items por Página" />
               </SelectTrigger>
@@ -76,15 +62,12 @@ export const CategoryView = () => {
                 ))}
               </SelectContent>
             </Select>
-            <div className="flex gap-2">
-              <Search />
-              <Create />
-            </div>
+            <div className="flex gap-2"></div>
           </div>
           <Separator />
-          <CategoryTable />
+          <Food_Table />
           <Separator />
-          <CategoryPagination />
+          <Food_Pagination />
         </div>
       </section>
     </>
