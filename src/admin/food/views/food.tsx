@@ -18,6 +18,7 @@ import { pagination } from "../../../common/utils";
 import { Separator } from "../../../common/libs/shadcn/components/ui/separator";
 import { Food_Table } from "../components/table";
 import { Food_Pagination } from "../components/pagination";
+import { Create_Food } from "../components/create";
 
 export const FoodView = () => {
   return (
@@ -62,7 +63,10 @@ export const FoodView = () => {
                 ))}
               </SelectContent>
             </Select>
-            <div className="flex gap-2"></div>
+            <div className="flex gap-2">
+
+              <Create_Food />
+            </div>
           </div>
           <Separator />
           <Food_Table />

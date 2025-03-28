@@ -15,11 +15,6 @@
         "href": "/promotions"
     },
     {
-        "text": "Promoções",
-        "icon": "promotion",
-        "href": "/promotions"
-    },
-    {
         "text": "Usuários",
         "icon": "user",
         "href": "/user"

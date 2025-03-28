@@ -28,7 +28,7 @@ export const Create = () => {
   const {
     register,
     handleSubmit,
-    formState: { isValid, errors },
+    formState: { errors },
     reset,
   } = useForm<CreateCategorySchemaType>({
     resolver: zodResolver(CreateCategoryschema),
@@ -36,14 +36,12 @@ export const Create = () => {
   const retriveCategories = useCategory((state) => state.fetch);
 
   const onSubmit = async (value: CreateCategorySchemaType) => {
-    if (isValid) {
-      const response = await createCategoryService(value);
+    const response = await createCategoryService(value);
 
-      if (response) {
-        reset();
-        retriveCategories();
-        setOpen(false);
-      }
+    if (response) {
+      reset();
+      retriveCategories();
+      setOpen(false);
     }
   };
 
