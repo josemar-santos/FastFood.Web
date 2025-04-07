@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "../../../../common/libs/shadcn/components/ui/table";
 import { useFood } from "../../../../common/stores";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { baseUrl, Currency } from "../../../../common/utils";
 import { Button } from "../../../../common/libs/shadcn/components/ui/button";
 import { Link } from "react-router-dom";
@@ -78,7 +78,7 @@ export const Food_Table = () => {
                             <Eye />
                           </Link>
                         </Button>
-                        <Delete_Food />
+                        <Delete_Food identifier={food.id} />
                         <Update_Food identifier={food.id} />
                       </div>
                     </TableCell>
