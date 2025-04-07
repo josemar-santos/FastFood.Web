@@ -1,5 +1,4 @@
-import { Plus, Trash2 } from "lucide-react";
-import { Button } from "../../../../common/libs/shadcn/components/ui/button";
+import { Trash2 } from "lucide-react";
 import { useExtra } from "../../../../common/stores/extra";
 import { useEffect } from "react";
 import { Currency } from "../../../../common/utils";

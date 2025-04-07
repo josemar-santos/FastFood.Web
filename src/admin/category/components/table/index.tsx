@@ -16,7 +16,7 @@ import {
 } from "../../../../common/libs/shadcn/components/ui/table";
 import { Switch } from "../../../../common/libs/shadcn/components/ui/switch";
 import { Spinner } from "../../../../common/components/spinner";
-import { motion } from "framer-motion";
+import { Table_Animation } from "../../../../common/components/table-animation";
 
 export const CategoryTable = () => {
   const categories = useCategory((state) => state.categories);
@@ -66,19 +66,9 @@ export const CategoryTable = () => {
   return (
     <>
       {loading ? (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Spinner />
-        </motion.div>
+        <Spinner />
       ) : (
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-        >
+        <Table_Animation>
           <Table>
             <TableHeader>
               <TableRow>
@@ -130,7 +120,7 @@ export const CategoryTable = () => {
               </TableCaption>
             )}
           </Table>
-        </motion.div>
+        </Table_Animation>
       )}
     </>
   );

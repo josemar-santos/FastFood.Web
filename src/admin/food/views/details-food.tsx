@@ -69,10 +69,10 @@ export const DetailsFoodView = () => {
             </Breadcrumb>
           </div>
 
-          <div className="bg-white shadow-md p-4">
-            <div className="flex gap-4 h-full">
+          <div className="bg-white shadow-md px-10 py-6">
+            <div className="flex gap-10 h-full">
               <div className="w-[45%]">
-                <img src={`${baseUrl}/upload/${currentFood?.image}`} className="rounded-lg max-h-full" />
+                <img src={`${baseUrl}/upload/${currentFood?.image}`} className="rounded-lg h-[70vh] w-full" />
               </div>
               <div className="w-[55%]">
                 <div className="space-y-2">

@@ -36,7 +36,7 @@ export const Add_Extra = () => {
     formState: { errors },
   } = useForm<ICreateExtraSchema>({
     resolver: zodResolver(CreateExtraSchema),
-    defaultValues: { increase: true, price: 0 },
+    defaultValues: { increase: false, price: "0" },
   });
 
   const onSubmit = async (data: ICreateExtraSchema) => {

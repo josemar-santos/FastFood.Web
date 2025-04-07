@@ -17,7 +17,7 @@ export const NavItem = ({ text, href, icon }: SideProps) => {
       to={href}
       className={({ isActive }) => {
         let baseClass =
-          "flex items-center text-sm px-3 py-2.5 rounded-lg text-slate-700 hover:bg-primary hover:text-white";
+          "flex items-center text-sm px-3 py-2.5 rounded-md text-slate-700 hover:bg-primary hover:text-white";
         let activeClass = isActive
           ? "bg-primary text-white"
           : "";
