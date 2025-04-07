@@ -1,7 +1,7 @@
 import z from "zod";
 
-const validImage = ["image/png", "image/jpeg", "image/webp", "image/jpg", "image/tiff", "image/svg"];
-const MAX_SIZE = 5 * 1024 * 1024;
+export const validImage = ["image/png", "image/jpeg", "image/webp", "image/jpg", "image/tiff", "image/svg"];
+export const MAX_SIZE = 5 * 1024 * 1024;
 
 export const CreateFoodSchema = z.object({
   name: z.string().min(1, "O nome é obrigátorio"),

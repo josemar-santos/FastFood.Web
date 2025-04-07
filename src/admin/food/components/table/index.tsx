@@ -1,9 +1,22 @@
-import { motion } from "framer-motion";
 import { Spinner } from "../../../../common/components/spinner";
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "../../../../common/libs/shadcn/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../../../../common/libs/shadcn/components/ui/table";
 import { useFood } from "../../../../common/stores";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { baseUrl, Currency } from "../../../../common/utils";
+import { Button } from "../../../../common/libs/shadcn/components/ui/button";
+import { Link } from "react-router-dom";
+import { Eye } from "lucide-react";
+import { Delete_Food } from "../delete";
+import { Update_Food } from "../update";
+import { Table_Animation } from "../../../../common/components/table-animation";
 
 export const Food_Table = () => {
   const foods = useFood((state) => state.foods);
@@ -12,32 +25,23 @@ export const Food_Table = () => {
 
   useEffect(() => {
     retriveFood();
-    console.log(foods);
   }, []);
 
   return (
     <>
       {loading ? (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Spinner />
-        </motion.div>
+        <Spinner className="h-44" />
       ) : (
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-        >
+        <Table_Animation>
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px] text-center">#</TableHead>
                 <TableHead className="w-[25%]">Comida</TableHead>
                 <TableHead className="text-center w-[15%]">Preço</TableHead>
-                <TableHead className="text-center w-[15%]">Tempo de preparo</TableHead>
+                <TableHead className="text-center w-[15%]">
+                  Tempo de preparo
+                </TableHead>
                 <TableHead className="text-center">Categoria</TableHead>
                 <TableHead className="text-center">Acção</TableHead>
               </TableRow>
@@ -62,27 +66,30 @@ export const Food_Table = () => {
                     <TableCell className="text-center">
                       {Currency(food.price)}
                     </TableCell>
-                    <TableCell className="text-center">
-                        {food.time}
-                    </TableCell>
+                    <TableCell className="text-center">{food.time}</TableCell>
                     <TableCell className="text-center">
                       {food.category}
                     </TableCell>
 
-
                     <TableCell className="text-center">
-                      {food.category}
+                      <div className="flex gap-2 justify-center">
+                        <Button variant="ghost" asChild>
+                          <Link to={`/food/${food.id}`}>
+                            <Eye />
+                          </Link>
+                        </Button>
+                        <Delete_Food />
+                        <Update_Food identifier={food.id} />
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             ) : (
-              <TableCaption className="py-5">
-                Sem nenhuma comida
-              </TableCaption>
+              <TableCaption className="py-5">Sem nenhuma comida</TableCaption>
             )}
           </Table>
-        </motion.div>
+        </Table_Animation>
       )}
     </>
   );
