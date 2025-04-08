@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Spinner } from "../../../common/components/spinner";
+import { Spinner } from "@/common/components/spinner";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,19 +8,19 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../../../common/libs/shadcn/components/ui/breadcrumb";
+} from "@/common/libs/shadcn/components/ui/breadcrumb";
 import { ChefHat, LayoutGrid } from "lucide-react";
 import { Food } from "../interface/food";
 import { getFood } from "../services";
-import { baseUrl, Currency } from "../../../common/utils";
+import { baseUrl, Currency } from "@/common/utils";
 import { ListExtra } from "../components/list-extra";
-import { useExtra } from "../../../common/stores/extra";
+import { useExtra } from "@/common/stores/extra";
 
 export const DetailsFoodView = () => {
   const params = useParams();
   const [loading, setLoading] = useState(false);
   const [currentFood, setCurrentFood] = useState<Food>();
-  const setFood = useExtra(state => state.setFood);
+  const setFood = useExtra((state) => state.setFood);
 
   useEffect(() => {
     async function loadData() {
@@ -72,7 +72,10 @@ export const DetailsFoodView = () => {
           <div className="bg-white shadow-md px-10 py-6">
             <div className="flex gap-10 h-full">
               <div className="w-[45%]">
-                <img src={`${baseUrl}/upload/${currentFood?.image}`} className="rounded-lg h-[70vh] w-full" />
+                <img
+                  src={`${baseUrl}/upload/${currentFood?.image}`}
+                  className="rounded-lg h-[70vh] w-full"
+                />
               </div>
               <div className="w-[55%]">
                 <div className="space-y-2">
@@ -83,8 +86,11 @@ export const DetailsFoodView = () => {
                   <p className="text-slate-500 my-2">
                     {currentFood?.description || "Sem descrição..."}
                   </p>
-
                   <p className="text-slate-500 my-2">{currentFood?.category}</p>
+                  <p className="text-slate-500 text-lg my-2">
+                    Tempo de Preparo:{" "}
+                    <span className="font-semibold">{currentFood?.time}</span>
+                  </p>
                   <h2 className="font-semibold text-xl text-slate-700">
                     {Currency(currentFood?.price || 0)}
                   </h2>

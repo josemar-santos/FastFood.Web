@@ -1,7 +1,8 @@
-import axios from "axios";
+
 import { CreateCategorySchemaType } from "../schema/create";
-import { baseUrl, HttpStatus } from "../../../common/utils";
+import { HttpStatus } from "@/common/utils";
 import { toast } from "sonner";
+import { request } from "@/common/libs/axios";
 
 export async function createCategoryService(data: CreateCategorySchemaType) {
   try {
@@ -11,7 +12,7 @@ export async function createCategoryService(data: CreateCategorySchemaType) {
     formRequest.append("image", data.icon[0]);
     formRequest.append("description", data.description || "");
 
-    const response = await axios.post(`${baseUrl}/category`, formRequest);
+    const response = await request.post('/category', formRequest);
 
     if (response.status === HttpStatus.CREATED) {
      

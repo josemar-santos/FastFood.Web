@@ -2,9 +2,8 @@ import { CategoryDelete } from "../delete";
 import { useEffect } from "react";
 import { Update } from "../update";
 import { toast } from "sonner";
-import axios from "axios";
-import { useCategory } from "../../../../common/stores";
-import { baseUrl, HttpStatus } from "../../../../common/utils";
+import { useCategory } from "@/common/stores";
+import { baseUrl, HttpStatus } from "@/common/utils";
 import {
   Table,
   TableBody,
@@ -13,10 +12,11 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../../common/libs/shadcn/components/ui/table";
-import { Switch } from "../../../../common/libs/shadcn/components/ui/switch";
-import { Spinner } from "../../../../common/components/spinner";
-import { Table_Animation } from "../../../../common/components/table-animation";
+} from "@/common/libs/shadcn/components/ui/table";
+import { Switch } from "@/common/libs/shadcn/components/ui/switch";
+import { Spinner } from "@/common/components/spinner";
+import { Table_Animation } from "@/common/components/table-animation";
+import { request } from "@/common/libs/axios";
 
 export const CategoryTable = () => {
   const categories = useCategory((state) => state.categories);
@@ -29,7 +29,7 @@ export const CategoryTable = () => {
 
   const toggle = async (id: string) => {
     try {
-      const response = await axios.patch(`${baseUrl}/category/${id}`);
+      const response = await request.patch(`/category/${id}`);
 
       if (response.status === HttpStatus.OK) {
         toast.success("Realizado com sucesso", {

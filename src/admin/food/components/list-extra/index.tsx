@@ -1,7 +1,7 @@
 import { Trash2 } from "lucide-react";
-import { useExtra } from "../../../../common/stores/extra";
+import { useExtra } from "@/common/stores/extra";
 import { useEffect } from "react";
-import { Currency } from "../../../../common/utils";
+import { Currency } from "@/common/utils";
 import { Add_Extra } from "../add-extra";
 
 export const ListExtra = () => {

@@ -9,17 +9,17 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../../../common/libs/shadcn/components/ui/breadcrumb";
+} from "@/common/libs/shadcn/components/ui/breadcrumb";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../common/libs/shadcn/components/ui/select";
-import { Separator } from "../../../common/libs/shadcn/components/ui/separator";
-import { useCategory } from "../../../common/stores";
-import { pagination } from "../../../common/utils";
+} from "@/common/libs/shadcn/components/ui/select";
+import { Separator } from "@/common/libs/shadcn/components/ui/separator";
+import { useCategory } from "@/common/stores";
+import { pagination } from "@/common/utils";
 import { Search } from "../components/search";
 
 export const CategoryView = () => {

@@ -1,10 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios from "axios";
 import { SquarePen } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { Button } from "../../../../common/libs/shadcn/components/ui/button";
+import { Button } from "@/common/libs/shadcn/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -13,15 +12,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../../../common/libs/shadcn/components/ui/dialog";
-import { Input } from "../../../../common/libs/shadcn/components/ui/input";
-import { Label } from "../../../../common/libs/shadcn/components/ui/label";
-import { Textarea } from "../../../../common/libs/shadcn/components/ui/textarea";
-import { useCategory } from "../../../../common/stores";
-import { baseUrl, HttpStatus } from "../../../../common/utils";
+} from "@/common/libs/shadcn/components/ui/dialog";
+import { Input } from "@/common/libs/shadcn/components/ui/input";
+import { Label } from "@/common/libs/shadcn/components/ui/label";
+import { Textarea } from "@/common/libs/shadcn/components/ui/textarea";
+import { useCategory } from "@/common/stores";
+import { HttpStatus } from "@/common/utils";
 import { Category } from "../../interface/category";
 import { updateSchema, UpdateschemaType } from "../../schema/update";
-import { Separator } from "../../../../common/libs/shadcn/components/ui/separator";
+import { Separator } from "@/common/libs/shadcn/components/ui/separator";
+import { request } from "@/common/libs/axios";
 
 type UpdateProps = {
   category: Category;
@@ -54,10 +54,7 @@ export const Update = ({ category }: UpdateProps) => {
           formRequest.append("icon", values.icon[0]);
         }
 
-        const response = await axios.put(
-          `${baseUrl}/category/${category.id}`,
-          formRequest
-        );
+        const response = await request.put(`/category/${category.id}`, formRequest);
 
         if (response.status === HttpStatus.OK) {
           reset();

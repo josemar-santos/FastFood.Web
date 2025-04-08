@@ -6,7 +6,7 @@ import {
 } from "../../schema/create";
 import { useState } from "react";
 import { Plus } from "lucide-react";
-import { useCategory } from "../../../../common/stores";
+import { useCategory } from "@/common/stores";
 import {
   Dialog,
   DialogClose,
@@ -15,13 +15,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../../../common/libs/shadcn/components/ui/dialog";
-import { Button } from "../../../../common/libs/shadcn/components/ui/button";
-import { Input } from "../../../../common/libs/shadcn/components/ui/input";
-import { Label } from "../../../../common/libs/shadcn/components/ui/label";
-import { Textarea } from "../../../../common/libs/shadcn/components/ui/textarea";
+} from "@/common/libs/shadcn/components/ui/dialog";
+import { Button } from "@/common/libs/shadcn/components/ui/button";
+import { Input } from "@/common/libs/shadcn/components/ui/input";
+import { Label } from "@/common/libs/shadcn/components/ui/label";
+import { Textarea } from "@/common/libs/shadcn/components/ui/textarea";
 import { createCategoryService } from "../../services";
-import { Separator } from "../../../../common/libs/shadcn/components/ui/separator";
+import { Separator } from "@/common/libs/shadcn/components/ui/separator";
 
 export const Create = () => {
   const [open, setOpen] = useState(false);

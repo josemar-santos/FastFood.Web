@@ -1,4 +1,4 @@
-import { Spinner } from "../../../../common/components/spinner";
+import { Spinner } from "@/common/components/spinner";
 import {
   Table,
   TableBody,
@@ -7,16 +7,16 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../../common/libs/shadcn/components/ui/table";
-import { useFood } from "../../../../common/stores";
+} from "@/common/libs/shadcn/components/ui/table";
+import { useFood } from "@/common/stores";
 import { useEffect } from "react";
-import { baseUrl, Currency } from "../../../../common/utils";
-import { Button } from "../../../../common/libs/shadcn/components/ui/button";
+import { baseUrl, Currency } from "@/common/utils";
+import { Button } from "@/common/libs/shadcn/components/ui/button";
 import { Link } from "react-router-dom";
 import { Eye } from "lucide-react";
 import { Delete_Food } from "../delete";
 import { Update_Food } from "../update";
-import { Table_Animation } from "../../../../common/components/table-animation";
+import { Table_Animation } from "@/common/components/table-animation";
 
 export const Food_Table = () => {
   const foods = useFood((state) => state.foods);

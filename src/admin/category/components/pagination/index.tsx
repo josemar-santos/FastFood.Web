@@ -1,5 +1,5 @@
-import { Pagination } from "../../../../common/components/pagination";
-import { useCategory } from "../../../../common/stores";
+import { Pagination } from "@/common/components/pagination";
+import { useCategory } from "@/common/stores";
 
 
 export const CategoryPagination = () => {

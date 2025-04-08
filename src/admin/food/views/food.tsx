@@ -6,16 +6,16 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "../../../common/libs/shadcn/components/ui/breadcrumb";
+} from "@/common/libs/shadcn/components/ui/breadcrumb";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../common/libs/shadcn/components/ui/select";
-import { pagination } from "../../../common/utils";
-import { Separator } from "../../../common/libs/shadcn/components/ui/separator";
+} from "@/common/libs/shadcn/components/ui/select";
+import { pagination } from "@/common/utils";
+import { Separator } from "@/common/libs/shadcn/components/ui/separator";
 import { Food_Table } from "../components/table";
 import { Food_Pagination } from "../components/pagination";
 import { Create_Food } from "../components/create";

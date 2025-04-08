@@ -1,5 +1,5 @@
-import { request } from "../../../common/libs/axios";
-import { HttpStatus } from "../../../common/utils";
+import { request } from "@/common/libs/axios";
+import { HttpStatus } from "@/common/utils";
 import { Food } from "../interface/food";
 
 export async function getFood(id: string): Promise<Food | null> {

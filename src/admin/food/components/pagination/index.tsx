@@ -1,5 +1,5 @@
-import { Pagination } from "../../../../common/components/pagination";
-import { useFood } from "../../../../common/stores";
+import { Pagination } from "@/common/components/pagination";
+import { useFood } from "@/common/stores";
 
 export const Food_Pagination = () => {
   const nextPage = useFood((state) => state.goTo);

@@ -1,5 +1,5 @@
-import { request } from "../../../common/libs/axios";
-import { HttpStatus } from "../../../common/utils";
+import { request } from "@/common/libs/axios";
+import { HttpStatus } from "@/common/utils";
 import { toast } from "sonner";
 import { ICreateExtraSchema } from "../schema/extra";
 

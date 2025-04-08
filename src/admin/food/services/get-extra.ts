@@ -1,5 +1,5 @@
-import { request } from "../../../common/libs/axios";
-import { HttpStatus } from "../../../common/utils";
+import { request } from "@/common/libs/axios";
+import { HttpStatus } from "@/common/utils";
 import { Extra } from "../interface/extra";
 
 export async function getExtraService(id: string): Promise<Extra[]> {

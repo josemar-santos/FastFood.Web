@@ -9,10 +9,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "../../../../common/libs/shadcn/components/ui/alert-dialog";
-import { Button } from "../../../../common/libs/shadcn/components/ui/button";
+} from "@/common/libs/shadcn/components/ui/alert-dialog";
+import { Button } from "@/common/libs/shadcn/components/ui/button";
 import { Update_Food_Props } from "../update";
-import { useFood } from "../../../../common/stores";
+import { useFood } from "@/common/stores";
 import { deleteFoodService } from "../../services/delete-food";
 
 export const Delete_Food = ({ identifier }: Update_Food_Props) => {

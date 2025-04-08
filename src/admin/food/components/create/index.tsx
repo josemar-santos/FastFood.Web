@@ -1,5 +1,5 @@
 import { Plus, SquareX } from "lucide-react";
-import { Button } from "../../../../common/libs/shadcn/components/ui/button";
+import { Button } from "@/common/libs/shadcn/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -8,28 +8,28 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../../../common/libs/shadcn/components/ui/dialog";
+} from "@/common/libs/shadcn/components/ui/dialog";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
-import { Spinner } from "../../../../common/components/spinner";
+import { Spinner } from "@/common/components/spinner";
 import { useForm } from "react-hook-form";
 import { CreateFoodSchema, ICreateFoodSchema } from "../../schema/create-food";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Label } from "../../../../common/libs/shadcn/components/ui/label";
-import { Input } from "../../../../common/libs/shadcn/components/ui/input";
-import { Textarea } from "../../../../common/libs/shadcn/components/ui/textarea";
+import { Label } from "@/common/libs/shadcn/components/ui/label";
+import { Input } from "@/common/libs/shadcn/components/ui/input";
+import { Textarea } from "@/common/libs/shadcn/components/ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../../common/libs/shadcn/components/ui/select";
+} from "@/common/libs/shadcn/components/ui/select";
 import { Category } from "../../../category/interface/category";
 import { getCategories } from "../../services";
 import { createFoodService } from "../../services/create-food";
-import { useFood } from "../../../../common/stores";
-import { Separator } from "../../../../common/libs/shadcn/components/ui/separator";
+import { useFood } from "@/common/stores";
+import { Separator } from "@/common/libs/shadcn/components/ui/separator";
 
 export const Create_Food = () => {
   const [open, setOpen] = useState(false);

@@ -1,6 +1,6 @@
 import { Separator } from "@radix-ui/react-separator";
-import { Spinner } from "../../../../common/components/spinner";
-import { Button } from "../../../../common/libs/shadcn/components/ui/button";
+import { Spinner } from "@/common/components/spinner";
+import { Button } from "@/common/libs/shadcn/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -9,16 +9,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../../../common/libs/shadcn/components/ui/dialog";
+} from "@/common/libs/shadcn/components/ui/dialog";
 import { Plus } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { Label } from "../../../../common/libs/shadcn/components/ui/label";
-import { Input } from "../../../../common/libs/shadcn/components/ui/input";
+import { Label } from "@/common/libs/shadcn/components/ui/label";
+import { Input } from "@/common/libs/shadcn/components/ui/input";
 import { CreateExtraSchema, ICreateExtraSchema } from "../../schema/extra";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Checkbox } from "../../../../common/libs/shadcn/components/ui/checkbox";
-import { useExtra } from "../../../../common/stores/extra";
+import { Checkbox } from "@/common/libs/shadcn/components/ui/checkbox";
+import { useExtra } from "@/common/stores/extra";
 import { createExtraService } from "../../services/create-extra";
 
 export const Add_Extra = () => {

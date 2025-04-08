@@ -1,10 +1,20 @@
-import axios from "axios";
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
-import { useCategory } from "../../../../common/stores";
-import { baseUrl, HttpStatus } from "../../../../common/utils";
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../../../../common/libs/shadcn/components/ui/alert-dialog";
-import { Button } from "../../../../common/libs/shadcn/components/ui/button";
+import { useCategory } from "@/common/stores";
+import { HttpStatus } from "@/common/utils";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/common/libs/shadcn/components/ui/alert-dialog";
+import { Button } from "@/common/libs/shadcn/components/ui/button";
+import { request } from "@/common/libs/axios";
 
 export interface CategoryDeleteProps {
   category: string;
@@ -13,7 +23,7 @@ export const CategoryDelete = ({ category }: CategoryDeleteProps) => {
   const retriveCategories = useCategory((state) => state.fetch);
   const remove = async () => {
     try {
-      const response = await axios.delete(`${baseUrl}/category/${category}`);
+      const response = await request.delete(`/category/${category}`);
 
       if (response.status === HttpStatus.OK) {
         toast.success("Realizado com sucesso", {

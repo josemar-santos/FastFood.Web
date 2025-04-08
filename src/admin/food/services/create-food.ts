@@ -1,6 +1,6 @@
 import { ICreateFoodSchema } from "../schema/create-food";
-import { request } from "../../../common/libs/axios";
-import { HttpStatus } from "../../../common/utils";
+import { request } from "@/common/libs/axios";
+import { HttpStatus } from "@/common/utils";
 import { toast } from "sonner";
 
 export async function createFoodService(data: ICreateFoodSchema) {
